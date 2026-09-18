@@ -1,299 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
 
-<title>ESign • Amaazbots</title>
+    <title>Install ESign - Amaazbots</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                         "SF Pro Text", Arial, sans-serif;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0, 170, 255, 0.22), transparent 35%),
+                radial-gradient(circle at 80% 80%, rgba(0, 110, 255, 0.18), transparent 35%),
+                #050816;
+            color: white;
+            overflow: hidden;
+            padding: 20px;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -50%;
+            background-image: radial-gradient(
+                rgba(0, 200, 255, 0.13) 1px,
+                transparent 1px
+            );
+            background-size: 35px 35px;
+            transform: rotate(15deg);
+            animation: moveBackground 25s linear infinite;
+            pointer-events: none;
+        }
 
-body{
-    font-family:Inter,sans-serif;
-    min-height:100vh;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#050816;
-    color:white;
-}
+        @keyframes moveBackground {
+            from {
+                transform: rotate(15deg) translate(0, 0);
+            }
 
-.bg{
-    position:fixed;
-    inset:0;
-    background:
-        radial-gradient(circle at 15% 20%,rgba(0,198,255,.30),transparent 30%),
-        radial-gradient(circle at 85% 80%,rgba(139,92,246,.25),transparent 30%),
-        radial-gradient(circle at 50% 40%,rgba(34,211,238,.18),transparent 40%),
-        #050816;
-}
+            to {
+                transform: rotate(15deg) translate(80px, 80px);
+            }
+        }
 
-.bg::before{
-    content:"";
-    position:absolute;
-    inset:-50%;
-    background:
-        radial-gradient(circle,rgba(255,255,255,.10) 1px,transparent 1px);
-    background-size:40px 40px;
-    animation:spin 90s linear infinite;
-}
+        .card {
+            position: relative;
+            width: 430px;
+            max-width: 94vw;
+            max-height: 95vh;
+            padding: 38px 28px 25px;
+            border-radius: 30px;
 
-@keyframes spin{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
-}
+            background: rgba(12, 22, 42, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.10);
 
-.card{
-    position:relative;
-    z-index:2;
-    width:430px;
-    max-width:92%;
-    max-height:95vh;
-    overflow:auto;
-    padding:42px;
-    text-align:center;
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(30px);
-    border-radius:30px;
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:0 30px 80px rgba(0,0,0,.55);
-}
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
 
-.card::-webkit-scrollbar{
-    width:0;
-}
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
-.icon{
-    width:120px;
-    height:120px;
-    display:block;
-    margin:0 auto 28px;
-    object-fit:contain;
-    padding:10px;
-    border-radius:28px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:
-        0 0 30px rgba(0,198,255,.25),
-        0 15px 45px rgba(0,0,0,.45);
-    animation:float 4s ease-in-out infinite;
-}
+            text-align: center;
+            z-index: 2;
+        }
 
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-8px);
-    }
-}
+        .logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            border-radius: 26px;
+            margin-bottom: 18px;
 
-h1{
-    font-size:36px;
-    font-weight:800;
-    margin-bottom:10px;
-}
+            filter:
+                drop-shadow(0 0 15px rgba(0, 200, 255, 0.45))
+                drop-shadow(0 0 35px rgba(0, 130, 255, 0.20));
 
-.subtitle{
-    color:#cbd5e1;
-    line-height:1.6;
-    font-size:16px;
-}
+            animation: float 3s ease-in-out infinite;
+        }
 
-.info{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:18px;
-}
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
 
-.tag{
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:999px;
-    padding:8px 16px;
-    font-size:14px;
-    color:#dbeafe;
-}
+            50% {
+                transform: translateY(-7px);
+            }
+        }
 
-.certificate{
-    margin-top:18px;
-    padding:15px 17px;
-    border-radius:17px;
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.10);
-    text-align:left;
-}
+        h1 {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
 
-.certificate-title{
-    font-size:13px;
-    font-weight:700;
-    color:#8ddfff;
-    margin-bottom:7px;
-}
+        .subtitle {
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
 
-.certificate-name{
-    font-size:13px;
-    line-height:1.5;
-    color:#d7deea;
-    word-break:break-word;
-}
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
 
-.badge{
-    display:inline-block;
-    margin-top:22px;
-    padding:10px 20px;
-    border-radius:999px;
-    background:rgba(24,201,100,.12);
-    border:1px solid rgba(24,201,100,.35);
-    color:#8df0b2;
-    font-weight:700;
-}
+        .tag {
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
 
-.install{
-    margin-top:34px;
-    width:100%;
-    padding:20px;
-    border:none;
-    border-radius:18px;
-    font-size:21px;
-    font-weight:800;
-    color:white;
-    cursor:pointer;
-    background:linear-gradient(135deg,#00c6ff,#6366f1);
-    box-shadow:0 0 45px rgba(0,198,255,.45);
-    transition:.25s;
-}
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.80);
+        }
 
-.install:hover{
-    transform:translateY(-4px) scale(1.02);
-    box-shadow:0 0 75px rgba(0,198,255,.75);
-}
+        .certificate {
+            text-align: left;
+            padding: 17px;
+            border-radius: 19px;
 
-.install:active{
-    transform:scale(.98);
-}
+            background: rgba(0, 130, 255, 0.08);
+            border: 1px solid rgba(0, 190, 255, 0.17);
 
-.status{
-    margin-top:22px;
-    font-weight:600;
-    color:#8ddfff;
-}
+            margin-bottom: 18px;
+        }
 
-.footer{
-    margin-top:30px;
-    font-size:13px;
-    color:#718096;
-}
+        .certificate-title {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 7px;
+        }
 
-.footer b{
-    color:white;
-}
+        .certificate-name {
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: white;
+            word-break: break-word;
+        }
 
-</style>
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
 
+            padding: 9px 14px;
+            border-radius: 999px;
+
+            background: rgba(35, 205, 115, 0.10);
+            border: 1px solid rgba(35, 205, 115, 0.20);
+
+            color: #64e69b;
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 18px;
+        }
+
+        .install-btn {
+            width: 100%;
+            border: none;
+            border-radius: 17px;
+            padding: 17px;
+
+            font-size: 16px;
+            font-weight: 800;
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #007aff,
+                #00bfff
+            );
+
+            box-shadow:
+                0 12px 30px rgba(0, 150, 255, 0.28),
+                inset 0 1px 0 rgba(255, 255, 255, 0.20);
+
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .install-btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 16px 35px rgba(0, 150, 255, 0.38),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        .install-btn:active {
+            transform: scale(0.98);
+        }
+
+        .countdown {
+            margin-top: 13px;
+            min-height: 18px;
+
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        .footer {
+            margin-top: 23px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 11px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 32px 20px 22px;
+                border-radius: 25px;
+            }
+
+            .logo {
+                width: 105px;
+                height: 105px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .certificate-name {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
+    <div class="card">
 
-<div class="card">
+        <img
+            src="esign-logo.png"
+            alt="ESign Logo"
+            class="logo"
+        >
 
-<img src="esign-logo.png" class="icon" alt="ESign">
+        <h1>ESign</h1>
 
-<h1>ESign</h1>
+        <p class="subtitle">
+            Install ESign directly on your iOS device
+        </p>
 
-<p class="subtitle">
-Install ESign directly to your iPhone or iPad using OTA installation.
-</p>
+        <div class="tags">
+            <div class="tag">📱 iOS</div>
+            <div class="tag">⚡ OTA Install</div>
+            <div class="tag">🔒 Secure</div>
+        </div>
 
-<div class="info">
+        <div class="certificate">
 
-    <div class="tag">
-        📱 iOS
+            <div class="certificate-title">
+                🔐 Certificate
+            </div>
+
+            <div class="certificate-name">
+                VINWASH
+            </div>
+
+        </div>
+
+        <div class="status">
+            🟢 Ready to Install
+        </div>
+
+        <button
+            class="install-btn"
+            onclick="installESign()"
+        >
+            🚀 Install ESign
+        </button>
+
+        <div class="countdown" id="countdown">
+            Preparing installation...
+        </div>
+
+        <div class="footer">
+            Powered by Amaazbots
+        </div>
+
     </div>
 
-    <div class="tag">
-        ⚡ OTA Install
-    </div>
+    <script>
 
-    <div class="tag">
-        🔒 Secure
-    </div>
+        const installURL =
+            "itms-services://?action=download-manifest&url=https://website.khoindvn.io.vn/plists/kjjenffojofo.plist";
 
-</div>
+        function installESign() {
+            window.location.href = installURL;
+        }
 
-<div class="certificate">
+        let seconds = 5;
 
-    <div class="certificate-title">
-        🔐 Certificate
-    </div>
+        const countdown =
+            document.getElementById("countdown");
 
-    <div class="certificate-name">
-        VINWASH
-    </div>
+        const timer = setInterval(() => {
 
-</div>
+            seconds--;
 
-<div class="badge">
-    🟢 Ready to Install
-</div>
+            if (seconds > 0) {
 
-<button class="install" onclick="install()">
-    🚀 Install ESign
-</button>
+                countdown.textContent =
+                    "Installation will begin in " +
+                    seconds +
+                    " seconds...";
 
-<div class="status" id="status">
-    Preparing installer...
-</div>
+            } else {
 
-<div class="footer">
-    Powered by <b>Amaazbots</b>
-</div>
+                clearInterval(timer);
 
-</div>
+                countdown.textContent =
+                    "Opening installation...";
 
-<script>
+                installESign();
+            }
 
-function install(){
+        }, 1000);
 
-    window.location.href =
-    "itms-services://?action=download-manifest&url=https://website.khoindvn.io.vn/plists/kjjenffojofo.plist";
-
-}
-
-let seconds = 5;
-
-const timer = setInterval(() => {
-
-    seconds--;
-
-    document.getElementById("status").innerHTML =
-        seconds > 0
-        ? `Launching installer in ${seconds} seconds...`
-        : "Launching installer...";
-
-    if(seconds <= 0){
-
-        clearInterval(timer);
-        install();
-
-    }
-
-},1000);
-
-</script>
+    </script>
 
 </body>
 </html>
